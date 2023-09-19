@@ -1,4 +1,5 @@
 import { ResponsiveBar } from "@nivo/bar";
+import cropsTest from "../assets/CropsTest";
 
 const data = [
   {
@@ -31,81 +32,6 @@ const data = [
     donut: 11,
     donutColor: "hsl(180, 70%, 50%)",
   },
-  {
-    country: "AF",
-    "hot dog": 133,
-    "hot dogColor": "hsl(125, 70%, 50%)",
-    burger: 179,
-    burgerColor: "hsl(148, 70%, 50%)",
-    sandwich: 47,
-    sandwichColor: "hsl(311, 70%, 50%)",
-    kebab: 2,
-    kebabColor: "hsl(233, 70%, 50%)",
-    fries: 91,
-    friesColor: "hsl(110, 70%, 50%)",
-    donut: 33,
-    donutColor: "hsl(52, 70%, 50%)",
-  },
-  {
-    country: "AG",
-    "hot dog": 150,
-    "hot dogColor": "hsl(252, 70%, 50%)",
-    burger: 197,
-    burgerColor: "hsl(334, 70%, 50%)",
-    sandwich: 76,
-    sandwichColor: "hsl(20, 70%, 50%)",
-    kebab: 185,
-    kebabColor: "hsl(29, 70%, 50%)",
-    fries: 144,
-    friesColor: "hsl(105, 70%, 50%)",
-    donut: 130,
-    donutColor: "hsl(208, 70%, 50%)",
-  },
-  {
-    country: "AI",
-    "hot dog": 6,
-    "hot dogColor": "hsl(223, 70%, 50%)",
-    burger: 95,
-    burgerColor: "hsl(25, 70%, 50%)",
-    sandwich: 13,
-    sandwichColor: "hsl(195, 70%, 50%)",
-    kebab: 66,
-    kebabColor: "hsl(346, 70%, 50%)",
-    fries: 3,
-    friesColor: "hsl(17, 70%, 50%)",
-    donut: 33,
-    donutColor: "hsl(123, 70%, 50%)",
-  },
-  {
-    country: "AL",
-    "hot dog": 121,
-    "hot dogColor": "hsl(220, 70%, 50%)",
-    burger: 53,
-    burgerColor: "hsl(124, 70%, 50%)",
-    sandwich: 16,
-    sandwichColor: "hsl(261, 70%, 50%)",
-    kebab: 77,
-    kebabColor: "hsl(262, 70%, 50%)",
-    fries: 151,
-    friesColor: "hsl(17, 70%, 50%)",
-    donut: 14,
-    donutColor: "hsl(358, 70%, 50%)",
-  },
-  {
-    country: "AM",
-    "hot dog": 69,
-    "hot dogColor": "hsl(226, 70%, 50%)",
-    burger: 139,
-    burgerColor: "hsl(356, 70%, 50%)",
-    sandwich: 102,
-    sandwichColor: "hsl(106, 70%, 50%)",
-    kebab: 139,
-    kebabColor: "hsl(3, 70%, 50%)",
-    fries: 129,
-    friesColor: "hsl(345, 70%, 50%)",
-    donut: 0,
-    donutColor: "hsl(35, 70%, 50%)",
-  },
 ];
 
 // make sure parent container have a defined height when using
@@ -116,14 +42,15 @@ const data = [
 const MyResponsiveBar = () => (
   <div style={{ height: 500 }}>
     <ResponsiveBar
-      data={data}
-      keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-      indexBy="country"
+      data={cropsTest}
+      keys={["baseSell"]}
+      indexBy="name"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={{ scheme: "nivo" }}
+      onClick={() => console.log(cropsTest)}
       defs={[
         {
           id: "dots",
@@ -168,7 +95,7 @@ const MyResponsiveBar = () => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "country",
+        legend: "Crop Name",
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -176,7 +103,7 @@ const MyResponsiveBar = () => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "food",
+        legend: "Sell Price", // TEMPORARY NAME, THIS SHOULD BE GOLD / DAY
         legendPosition: "middle",
         legendOffset: -40,
       }}
