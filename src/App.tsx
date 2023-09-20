@@ -1,13 +1,13 @@
 import Calculator from "./components/Calculator";
+import CropsChart from "./components/CropsChart";
 import Heading from "./components/Heading";
-import MyResponsiveBar from "./components/TestNivoBar";
 
 function App() {
   return (
     <>
       <Heading />
       <Calculator />
-      <MyResponsiveBar />
+      <CropsChart />
     </>
   );
 }
