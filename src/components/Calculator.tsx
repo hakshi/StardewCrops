@@ -1,20 +1,11 @@
-import CropButton from "./CropButton";
-//import crops from "../assets/Crops";
-import crops from "../assets/CropsTest";
-import SeasonPicker from "./SeasonPicker";
-
-let cropsList = crops;
+import SeasonPickerTest from "./SeasonPickerNew";
+import CropsChart from "./CropsChart";
 
 const Calculator = () => {
   return (
     <>
-      <h2>Calculator</h2>
-      <SeasonPicker />
-      {cropsList.map((item) => (
-        <CropButton key={item.name} url={item.url}>
-          {item.name}
-        </CropButton>
-      ))}
+      <SeasonPickerTest />
+      <CropsChart />
     </>
   );
 };
