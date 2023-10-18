@@ -1,8 +1,18 @@
 import { useState } from "react";
 
-function SeasonPickerTest() {
+interface Props {
+  defaultSeason: number;
+  onSeasonChange: (index: number) => void;
+}
+
+function SeasonPickerTest({ defaultSeason, onSeasonChange }: Props) {
   let seasonsList = ["Spring", "Summer", "Fall", "Winter"];
-  const [selectedSeason, setSelectedSeason] = useState(0);
+  const [selectedSeason, setSelectedSeason] = useState(defaultSeason);
+
+  const handleItemClick = (index: number) => {
+    setSelectedSeason(index);
+    onSeasonChange(index);
+  };
 
   return (
     <div id="container">
@@ -16,7 +26,8 @@ function SeasonPickerTest() {
             }
             key={season}
             onClick={() => {
-              setSelectedSeason(index);
+              handleItemClick(index);
+              console.log(index);
             }}
           >
             {season}
