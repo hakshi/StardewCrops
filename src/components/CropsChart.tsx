@@ -1,4 +1,4 @@
-import crops2DArray from "../assets/CropsTest";
+import crops2DArray from "../assets/Crops";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 interface Props {
