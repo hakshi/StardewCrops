@@ -2,30 +2,22 @@
  * All data gathered from a modified version of polarstoat/stardew-crop-data
  */
 
+interface Crop {
+  name: string;
+  baseSell: number;
+  url: string;
+  img: string;
+  season: string;
+}
+
 // Crop List
-let crops = [
+let crops: Crop[] = [
   {
     name: "Amaranth",
+    baseSell: 150,
     url: "http://stardewvalleywiki.com/Amaranth",
     img: "amaranth.png",
-    seeds: {
-      pierre: 70,
-      joja: 87,
-      special: 0,
-      specialLoc: "",
-      specialUrl: ""
-    },
-    growth: {
-      initial: 7,
-      regrow: 0
-    },
-    produce: {
-      extra: 0,
-      extraPerc: 0,
-      price: 150,
-      jarType: "Pickles",
-      kegType: "Juice"
-    }
+    season: "fall"
   },
   {
     name: "Grape",
@@ -45,7 +37,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0,
-      price: 80,
+      baseSell: 80,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -68,7 +60,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0,
-      price: 25,
+      baseSell: 25,
       keg: 300,
       jarType: "Pickles",
       kegType: "Pale Ale"
@@ -92,7 +84,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 300,
+      baseSell: 300,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -115,7 +107,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 3000
+      baseSell: 3000
     }
   },
   {
@@ -136,7 +128,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 50,
+      baseSell: 50,
       keg: 100,
       jarType: "Pickles",
       kegType: "Tea"
@@ -160,7 +152,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 290
+      baseSell: 290
     }
   },
   {
@@ -181,7 +173,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 30
+      baseSell: 30
     }
   },
   {
@@ -202,7 +194,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 50
+      baseSell: 50
     }
   },
   {
@@ -223,7 +215,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 80
+      baseSell: 80
     }
   },
   {
@@ -244,7 +236,7 @@ let crops = [
     produce: {
       extra: 3,
       extraPerc: 1,
-      price: 15,
+      baseSell: 15,
       keg: 150 / 5,
       kegType: "Coffee"
     }
@@ -267,7 +259,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 140
+      baseSell: 140
     }
   },
   {
@@ -288,7 +280,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 90
+      baseSell: 90
     }
   },
   {
@@ -309,7 +301,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 35,
+      baseSell: 35,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -332,7 +324,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0,
-      price: 40,
+      baseSell: 40,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -355,7 +347,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 175,
+      baseSell: 175,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -378,7 +370,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0.2,
-      price: 80,
+      baseSell: 80,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -401,7 +393,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 60,
+      baseSell: 60,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -424,7 +416,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 100,
+      baseSell: 100,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -447,7 +439,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 110,
+      baseSell: 110,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -470,7 +462,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0.11,
-      price: 30,
+      baseSell: 30,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -493,7 +485,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 220,
+      baseSell: 220,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -516,7 +508,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 250,
+      baseSell: 250,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -539,7 +531,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0.05,
-      price: 60,
+      baseSell: 60,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -562,7 +554,7 @@ let crops = [
     produce: {
       extra: 2,
       extraPerc: 1,
-      price: 50,
+      baseSell: 50,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -585,7 +577,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0.03,
-      price: 40,
+      baseSell: 40,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -608,7 +600,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 25,
+      baseSell: 25,
       keg: 200,
       jarType: "Pickles",
       kegType: "Beer"
@@ -632,7 +624,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 90,
+      baseSell: 90,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -655,7 +647,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 260,
+      baseSell: 260,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -678,7 +670,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 750,
+      baseSell: 750,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -701,7 +693,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0,
-      price: 50,
+      baseSell: 50,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -724,7 +716,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0.002,
-      price: 60,
+      baseSell: 60,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -747,7 +739,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 160,
+      baseSell: 160,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -770,7 +762,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 320,
+      baseSell: 320,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -793,7 +785,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 80,
+      baseSell: 80,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -816,7 +808,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 160,
+      baseSell: 160,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -839,7 +831,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 1,
-      price: 75,
+      baseSell: 75,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -862,7 +854,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 100,
+      baseSell: 100,
       jarType: "Pickles",
       kegType: "Juice"
     }
@@ -885,7 +877,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 550,
+      baseSell: 550,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -908,7 +900,7 @@ let crops = [
     produce: {
       extra: 0,
       extraPerc: 0,
-      price: 75,
+      baseSell: 75,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -931,7 +923,7 @@ let crops = [
     produce: {
       extra: 1,
       extraPerc: 0.02,
-      price: 120,
+      baseSell: 120,
       jarType: "Jelly",
       kegType: "Wine"
     }
@@ -955,7 +947,7 @@ let crops = [
       extra: 0,
       extraPerc: 0,
       // (Wild Horseradish + Daffodil + Leek + Dandelion) / 4
-      price: (50 + 30 + 60 + 40) / 4
+      baseSell: (50 + 30 + 60 + 40) / 4
     },
     "isWildseed": true
   },
@@ -978,7 +970,7 @@ let crops = [
       extra: 0,
       extraPerc: 0,
       // (Spice Berry + Grape + Sweet Pea) / 3
-      price: (80 + 80 + 50) / 3,
+      baseSell: (80 + 80 + 50) / 3,
       jarType: "Jelly",
       kegType: "Wine"
     },
@@ -1003,7 +995,7 @@ let crops = [
       extra: 0,
       extraPerc: 0,
       // (Blackberry + Common Mushroom + Hazelnut + Wild Plum) / 4
-      price: (20 + 40 + 90 + 80) / 4,
+      baseSell: (20 + 40 + 90 + 80) / 4,
       jarType: "Jelly",
       kegType: "Wine"
     },
@@ -1028,7 +1020,7 @@ let crops = [
       extra: 0,
       extraPerc: 0,
       // (Crocus + Crystal Fruit + Snow Yam + Winter Root) / 4
-      price: (60 + 150 + 100 + 70) / 4,
+      baseSell: (60 + 150 + 100 + 70) / 4,
       jarType: "Jelly",
       kegType: "Wine"
     },
@@ -1036,4 +1028,20 @@ let crops = [
   }
 ];
 
-export default crops;
+
+interface SeasonMap {
+  [season: string]: Crop[];
+}
+
+// Generate a map of crops by season
+const cropsBySeason = crops.reduce<SeasonMap>((acc, crop) => {
+  if (!acc[crop.season]) {
+      acc[crop.season] = [];
+  }
+  acc[crop.season].push(crop);
+  return acc;
+}, {});
+
+const crops2DArray = Object.values(cropsBySeason);
+
+export default crops2DArray;
