@@ -10,7 +10,7 @@ interface Crop {
 }
 
 
-let cropsTest: Crop[] = [
+let crops: Crop[] = [
     {
         name: "Blue Jazz",
         baseSell: 50,
@@ -263,7 +263,7 @@ interface SeasonMap {
 }
 
 // Generate a map of crops by season
-const cropsBySeason = cropsTest.reduce<SeasonMap>((acc, crop) => {
+const cropsBySeason = crops.reduce<SeasonMap>((acc, crop) => {
     if (!acc[crop.season]) {
         acc[crop.season] = [];
     }
