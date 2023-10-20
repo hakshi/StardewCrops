@@ -12,14 +12,37 @@ const Calculator = () => {
   };
 
   return (
-    <>
-      <SeasonPickerTest
-        defaultSeason={selectedSeason}
-        onSeasonChange={handleSeasonChange}
-      />
-      <CropsChart selectedSeason={selectedSeason} />
-    </>
+    <div style={styles.container}>
+      <div style={styles.seasonPicker}>
+        <SeasonPickerTest
+          defaultSeason={selectedSeason}
+          onSeasonChange={handleSeasonChange}
+        />
+      </div>
+      <div style={styles.cropsChart}>
+        <CropsChart selectedSeason={selectedSeason} />
+      </div>
+    </div>
   );
 };
 
 export default Calculator;
+
+const styles: {
+  container: React.CSSProperties;
+  seasonPicker: React.CSSProperties;
+  cropsChart: React.CSSProperties;
+} = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  seasonPicker: {
+    // flex: 1,
+  },
+  cropsChart: {
+    // flex: 3,
+  },
+};
