@@ -92,7 +92,7 @@ let crops: Crop[] = [
         name: "Unmilled Rice",
         baseSell: 30,
         url: "http://stardewvalleywiki.com/Unmilled_Rice",
-        img: "unmilledrice.png",
+        img: "unmilledrice.webp",
         season: "spring"
     },
     {
