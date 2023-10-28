@@ -7,6 +7,8 @@ interface Crop {
     url: string;
     img: string;
     season: string;
+    initialGrow: number;
+    regrow: number;
 }
 
 
@@ -16,21 +18,27 @@ let cropsTest: Crop[] = [
         baseSell: 50,
         url: "http://stardewvalleywiki.com/Blue_Jazz",
         img: "bluejazz.png",
-        season: "spring"
+        season: "spring",
+        initialGrow: 7,
+        regrow: 0
     },
     {
         name: "Blueberry",
         baseSell: 50,
         url: "http://stardewvalleywiki.com/Blueberry",
         img: "blueberry.png",
-        season: "summer"
+        season: "summer",
+        initialGrow: 7,
+        regrow: 4
     },
     {
         name: "Amaranth",
         baseSell: 150,
         url: "http://stardewvalleywiki.com/Amaranth",
         img: "amaranth.png",
-        season: "fall"
+        season: "fall",
+        initialGrow: 7,
+        regrow: 0
     }
 ];
 
