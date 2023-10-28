@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import crops2DArray from "../assets/CropsTest";
+import crops2DArray from "../assets/Crops";
 import {
   BarChart,
   Bar,
