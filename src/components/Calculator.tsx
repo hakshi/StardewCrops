@@ -13,14 +13,14 @@ const Calculator = () => {
 
   return (
     <div style={styles.container}>
+      <div style={styles.cropsChart}>
+        <CropsChart selectedSeason={selectedSeason} />
+      </div>
       <div style={styles.seasonPicker}>
         <SeasonPickerTest
           defaultSeason={selectedSeason}
           onSeasonChange={handleSeasonChange}
         />
-      </div>
-      <div style={styles.cropsChart}>
-        <CropsChart selectedSeason={selectedSeason} />
       </div>
     </div>
   );

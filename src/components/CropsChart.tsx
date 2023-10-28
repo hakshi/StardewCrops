@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import crops2DArray from "../assets/Crops";
+import crops2DArray from "../assets/CropsTest";
 import {
   BarChart,
   Bar,
@@ -15,7 +15,7 @@ interface Props {
   selectedSeason: number;
 }
 
-// Interface for useStae call for setLoadedIcons function
+// Interface for useState call for setLoadedIcons function
 interface LoadedIcons {
   [key: string]: string;
 }
@@ -25,6 +25,7 @@ interface LoadedIcons {
 function CropsChart({ selectedSeason }: Props) {
   const [loadedIcons, setLoadedIcons] = useState<LoadedIcons>({});
   const dataForCurrentSeason = crops2DArray[selectedSeason];
+  const [growthDays, setGrowthDays] = useState(7);
 
   useEffect(() => {
     // Function to preload all images
@@ -64,13 +65,29 @@ function CropsChart({ selectedSeason }: Props) {
 
   return (
     <div style={styles.container}>
+      <label>
+        Growth Days:
+        <input
+          type="number"
+          value={growthDays}
+          onChange={(e) => setGrowthDays(parseInt(e.target.value))}
+        />
+      </label>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart width={1000} height={500} data={dataForCurrentSeason}>
-          <Bar dataKey="baseSell" fill="#8884d8" />
-          <CartesianGrid strokeDasharray="3 3" />
+        <BarChart width={1000} height={800} data={dataForCurrentSeason}>
           <XAxis dataKey="name" tick={<CustomTick />} />
           <YAxis />
-          <Tooltip />
+          <Tooltip
+            formatter={(value: number) => `$${value.toFixed(2)}`}
+            labelFormatter={(name: string) => `Crop: ${name}`}
+          />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Bar
+            dataKey={(crop) =>
+              (crop.baseSell / (crop.initialGrow + crop.regrow)) * growthDays
+            }
+            fill="#8884d8"
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
