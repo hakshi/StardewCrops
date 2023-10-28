@@ -13,6 +13,7 @@ import {
 // Interface for Props for CropsChart function
 interface Props {
   selectedSeason: number;
+  growthDays: number;
 }
 
 // Interface for useState call for setLoadedIcons function
@@ -22,10 +23,10 @@ interface LoadedIcons {
 
 // Function to render the CropsChart based on the selected state
 // passed from the SeasonPicker component.
-function CropsChart({ selectedSeason }: Props) {
+function CropsChart({ selectedSeason, growthDays }: Props) {
   const [loadedIcons, setLoadedIcons] = useState<LoadedIcons>({});
   const dataForCurrentSeason = crops2DArray[selectedSeason];
-  const [growthDays, setGrowthDays] = useState(7);
+  // const [growthDays, setGrowthDays] = useState(7);
 
   useEffect(() => {
     // Function to preload all images
@@ -65,14 +66,14 @@ function CropsChart({ selectedSeason }: Props) {
 
   return (
     <div style={styles.container}>
-      <label>
+      {/* <label>
         Growth Days:
         <input
           type="number"
           value={growthDays}
           onChange={(e) => setGrowthDays(parseInt(e.target.value))}
         />
-      </label>
+      </label> */}
       <ResponsiveContainer width="100%" height="100%">
         <BarChart width={1000} height={800} data={dataForCurrentSeason}>
           <XAxis dataKey="name" tick={<CustomTick />} />

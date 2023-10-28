@@ -3,15 +3,28 @@ import { useState } from "react";
 interface Props {
   defaultSeason: number;
   onSeasonChange: (index: number) => void;
+  defaultDays: number;
+  onDaysChange: (days: number) => void;
 }
 
-function SeasonPickerTest({ defaultSeason, onSeasonChange }: Props) {
+function SeasonPickerTest({
+  defaultSeason,
+  onSeasonChange,
+  defaultDays,
+  onDaysChange,
+}: Props) {
   let seasonsList = ["Spring", "Summer", "Fall", "Winter"];
   const [selectedSeason, setSelectedSeason] = useState(defaultSeason);
+  const [growthDays, setGrowthDays] = useState(defaultDays);
 
   const handleItemClick = (index: number) => {
     setSelectedSeason(index);
     onSeasonChange(index);
+  };
+
+  const handleGrowthDaysChange = (days: number) => {
+    setGrowthDays(days);
+    onDaysChange(days);
   };
 
   return (
@@ -34,6 +47,14 @@ function SeasonPickerTest({ defaultSeason, onSeasonChange }: Props) {
           </li>
         ))}
       </ul>
+      <label>
+        Growth Days:
+        <input
+          type="number"
+          value={growthDays}
+          onChange={(e) => handleGrowthDaysChange(parseInt(e.target.value))}
+        />
+      </label>
     </div>
   );
 }
