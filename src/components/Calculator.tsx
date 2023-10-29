@@ -5,7 +5,7 @@ import { useState } from "react";
 const Calculator = () => {
   // State for the selected season in the parent component.
   const [selectedSeason, setSelectedSeason] = useState(0);
-  const [growthDays, setGrowthDays] = useState(7);
+  const [growthDays, setGrowthDays] = useState(28);
 
   // Function to handle updates from the child component
   const handleSeasonChange = (index: number) => {

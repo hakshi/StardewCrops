@@ -26,16 +26,36 @@ interface LoadedIcons {
 function CropsChart({ selectedSeason, growthDays }: Props) {
   const [loadedIcons, setLoadedIcons] = useState<LoadedIcons>({});
   const dataForCurrentSeason = crops2DArray[selectedSeason];
-  // const [growthDays, setGrowthDays] = useState(7);
 
+  // Calculate the sell value of the crop.
+  // If the crop cannot be grown with the current growthDays state
+  // then set value to 0
+  const calculateBarValue = (crop: (typeof dataForCurrentSeason)[0]) => {
+    if (crop.initialGrow > growthDays) {
+      return 0;
+    }
+    return (crop.baseSell / (crop.initialGrow + crop.regrow)) * growthDays;
+  };
+
+  // Sort the data for the current season based on the calculated value
+  const sortedData = [...dataForCurrentSeason].sort((a, b) => {
+    const aValue = calculateBarValue(a);
+    const bValue = calculateBarValue(b);
+    return bValue - aValue; // For descending order
+  });
+
+  // Function to preload all crop thumbnails for bar
   useEffect(() => {
-    // Function to preload all images
     const preloadIcons = async () => {
       const icons: LoadedIcons = {};
 
       for (const crop of dataForCurrentSeason) {
-        const module = await import(`../assets/img/${crop.img}`);
-        icons[crop.name] = module.default;
+        try {
+          const module = await import(`../assets/img/${crop.img}`);
+          icons[crop.name] = module.default;
+        } catch (error) {
+          console.error("Error loading icon for", crop.name, ":", error);
+        }
       }
 
       setLoadedIcons(icons);
@@ -66,16 +86,8 @@ function CropsChart({ selectedSeason, growthDays }: Props) {
 
   return (
     <div style={styles.container}>
-      {/* <label>
-        Growth Days:
-        <input
-          type="number"
-          value={growthDays}
-          onChange={(e) => setGrowthDays(parseInt(e.target.value))}
-        />
-      </label> */}
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart width={1000} height={800} data={dataForCurrentSeason}>
+        <BarChart width={1000} height={800} data={sortedData}>
           <XAxis dataKey="name" tick={<CustomTick />} />
           <YAxis />
           <Tooltip
@@ -83,12 +95,7 @@ function CropsChart({ selectedSeason, growthDays }: Props) {
             labelFormatter={(name: string) => `Crop: ${name}`}
           />
           <CartesianGrid strokeDasharray="3 3" />
-          <Bar
-            dataKey={(crop) =>
-              (crop.baseSell / (crop.initialGrow + crop.regrow)) * growthDays
-            }
-            fill="#8884d8"
-          />
+          <Bar dataKey={calculateBarValue} fill="#8884d8" />
         </BarChart>
       </ResponsiveContainer>
     </div>
