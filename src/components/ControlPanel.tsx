@@ -89,7 +89,7 @@ function ControlPanel({
             value={growthDays}
             onChange={(e) => handleGrowthDaysChange(parseInt(e.target.value))}
             min="0"
-            max="28"
+            max={28}
           />
         </label>
       </div>
