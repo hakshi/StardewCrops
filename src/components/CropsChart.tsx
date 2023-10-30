@@ -176,7 +176,7 @@ export default CropsChart;
 
 const styles = {
   container: {
-    width: 1500,
+    width: 1000,
     height: 500,
   },
 };
