@@ -7,6 +7,7 @@ const Calculator = () => {
   const [selectedSeason, setSelectedSeason] = useState(0);
   const [growthDays, setGrowthDays] = useState(28);
   const [selectedFertilizer, setSelectedFertilizer] = useState(0);
+  const [farmingLevel, setFarmingLevel] = useState(0);
 
   // Function to handle updates from the child component
   const handleSeasonChange = (index: number) => {
@@ -19,6 +20,10 @@ const Calculator = () => {
 
   const handleFertilizerChange = (index: number) => {
     setSelectedFertilizer(index);
+  };
+
+  const handleFarmingLevelChange = (farmingLevel: number) => {
+    setFarmingLevel(farmingLevel);
   };
 
   return (
@@ -38,6 +43,8 @@ const Calculator = () => {
           onDaysChange={handleGrowthDays}
           defaultFertilizer={selectedFertilizer}
           onFertilizerChange={handleFertilizerChange}
+          defaultFarmingLevel={farmingLevel}
+          onFarmingLevelChange={handleFarmingLevelChange}
         />
       </div>
     </div>

@@ -7,6 +7,8 @@ interface Props {
   onDaysChange: (days: number) => void;
   defaultFertilizer: number;
   onFertilizerChange: (index: number) => void;
+  defaultFarmingLevel: number;
+  onFarmingLevelChange: (farmingLevel: number) => void;
 }
 
 function ControlPanel({
@@ -16,6 +18,8 @@ function ControlPanel({
   onDaysChange,
   defaultFertilizer,
   onFertilizerChange,
+  defaultFarmingLevel,
+  onFarmingLevelChange,
 }: Props) {
   let seasonsList = ["Spring", "Summer", "Fall", "Winter"];
   let fertilizerList = [
@@ -27,11 +31,14 @@ function ControlPanel({
     "Deluxe Speed-Gro",
     "Hyper Speed-Gro",
   ];
+  // All state variables
   const [selectedSeason, setSelectedSeason] = useState(defaultSeason);
   const [growthDays, setGrowthDays] = useState(defaultDays);
   const [selectedFertilizer, setSelectedFertilizer] =
     useState(defaultFertilizer);
+  const [farmingLevel, setFarmingLevel] = useState(defaultFarmingLevel);
 
+  // State variable handlers
   const handleSeasonClick = (index: number) => {
     setSelectedSeason(index);
     onSeasonChange(index);
@@ -45,6 +52,11 @@ function ControlPanel({
   const handleFertilizerClick = (index: number) => {
     setSelectedFertilizer(index);
     onFertilizerChange(index);
+  };
+
+  const handleFarmingLevelChange = (farmingLevel: number) => {
+    setFarmingLevel(farmingLevel);
+    onFarmingLevelChange(farmingLevel);
   };
 
   return (
@@ -79,7 +91,7 @@ function ControlPanel({
           />
         </label>
       </div>
-      <div>
+      <div className="fertilizerPicker">
         <ul className="list-group">
           {fertilizerList.map((fertilizer, index) => (
             <li
@@ -98,6 +110,16 @@ function ControlPanel({
             </li>
           ))}
         </ul>
+      </div>
+      <div className="farmingLevel">
+        <label>
+          Farming Level:
+          <input
+            type="number"
+            value={farmingLevel}
+            onChange={(e) => handleFarmingLevelChange(parseInt(e.target.value))}
+          />
+        </label>
       </div>
     </div>
   );
