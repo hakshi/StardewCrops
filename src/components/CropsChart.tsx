@@ -15,6 +15,7 @@ interface Props {
   selectedSeason: number;
   growthDays: number;
   selectedFertilizer: number;
+  farmingLevel: number;
 }
 
 // Interface for useState call for setLoadedIcons function
@@ -24,7 +25,12 @@ interface LoadedIcons {
 
 // Function to render the CropsChart based on the selected state
 // passed from the SeasonPicker component.
-function CropsChart({ selectedSeason, growthDays, selectedFertilizer }: Props) {
+function CropsChart({
+  selectedSeason,
+  growthDays,
+  selectedFertilizer,
+  farmingLevel,
+}: Props) {
   const [loadedIcons, setLoadedIcons] = useState<LoadedIcons>({});
   const dataForCurrentSeason = crops2DArray[selectedSeason];
 
@@ -35,27 +41,50 @@ function CropsChart({ selectedSeason, growthDays, selectedFertilizer }: Props) {
     if (crop.initialGrow > growthDays) {
       return 0;
     }
-    // variable to store fertilizerModifer results
-    let fertilizerModifier = 1;
+    // variable to store growthTime changes based on speed increasing fertilizer
+    let growthTimeModifier = 1;
+    // variable to store sellPrice changes based on quality increasing fertilizer
+    // and farmingLevel
+    let sellPriceModifier = 1;
     if (selectedFertilizer == 0) {
       // no fertilizer
-      // return base function with no changes to math
-      return (crop.baseSell / (crop.initialGrow + crop.regrow)) * growthDays;
+      if (farmingLevel == 0) {
+        sellPriceModifier = 1.01;
+      } else {
+        sellPriceModifier = 1.01 + (0.24 / 14) * farmingLevel;
+      }
+      return (
+        ((crop.baseSell * sellPriceModifier) /
+          (crop.initialGrow + crop.regrow)) *
+        growthDays
+      );
     } else if (selectedFertilizer > 0 && selectedFertilizer < 4) {
       // sellprice increase
       if (selectedFertilizer == 1) {
         // basic fertilizer
-        fertilizerModifier = 1.01;
+        if (farmingLevel == 0) {
+          sellPriceModifier = 1.04;
+        } else {
+          sellPriceModifier = 1.04 + (0.32 / 14) * farmingLevel;
+        }
       } else if (selectedFertilizer == 2) {
         // quality fertilizer
-        fertilizerModifier = 1.07;
+        if (farmingLevel == 0) {
+          sellPriceModifier = 1.07;
+        } else {
+          sellPriceModifier = 1.07 + (0.37 / 14) * farmingLevel;
+        }
       } else {
         // selectedFertilizer == 3, deluxe fertilizer
-        fertilizerModifier = 1.32;
+        if (farmingLevel == 0) {
+          sellPriceModifier = 1.32;
+        } else {
+          sellPriceModifier = 1.32 + (0.45 / 14) * farmingLevel;
+        }
       }
       // Fertilizer increases baseSell price
       return (
-        ((crop.baseSell * fertilizerModifier) /
+        ((crop.baseSell * sellPriceModifier) /
           (crop.initialGrow + crop.regrow)) *
         growthDays
       );
@@ -63,18 +92,18 @@ function CropsChart({ selectedSeason, growthDays, selectedFertilizer }: Props) {
       // growthTime decrease
       if (selectedFertilizer == 4) {
         // Speed-Gro
-        fertilizerModifier = 0.9;
+        growthTimeModifier = 0.9;
       } else if (selectedFertilizer == 5) {
         // Deluxe Speed-Gro
-        fertilizerModifier = 0.75;
+        growthTimeModifier = 0.75;
       } else {
         // selectedFertilizer == 6 Hyper Speed-Gro
-        fertilizerModifier = 0.66;
+        growthTimeModifier = 0.66;
       }
       // Fertilizer decreases initialGrow time
       return (
         (crop.baseSell /
-          (crop.initialGrow * fertilizerModifier + crop.regrow)) *
+          (crop.initialGrow * growthTimeModifier + crop.regrow)) *
         growthDays
       );
     }

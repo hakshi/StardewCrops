@@ -33,6 +33,7 @@ const Calculator = () => {
           selectedSeason={selectedSeason}
           growthDays={growthDays}
           selectedFertilizer={selectedFertilizer}
+          farmingLevel={farmingLevel}
         />
       </div>
       <div style={styles.seasonPicker}>

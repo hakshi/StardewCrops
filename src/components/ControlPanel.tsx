@@ -88,6 +88,8 @@ function ControlPanel({
             type="number"
             value={growthDays}
             onChange={(e) => handleGrowthDaysChange(parseInt(e.target.value))}
+            min="0"
+            max="28"
           />
         </label>
       </div>
@@ -118,6 +120,8 @@ function ControlPanel({
             type="number"
             value={farmingLevel}
             onChange={(e) => handleFarmingLevelChange(parseInt(e.target.value))}
+            min="0"
+            max="14"
           />
         </label>
       </div>
