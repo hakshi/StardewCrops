@@ -14,6 +14,7 @@ import {
 interface Props {
   selectedSeason: number;
   growthDays: number;
+  selectedFertilizer: number;
 }
 
 // Interface for useState call for setLoadedIcons function
@@ -23,7 +24,7 @@ interface LoadedIcons {
 
 // Function to render the CropsChart based on the selected state
 // passed from the SeasonPicker component.
-function CropsChart({ selectedSeason, growthDays }: Props) {
+function CropsChart({ selectedSeason, growthDays, selectedFertilizer }: Props) {
   const [loadedIcons, setLoadedIcons] = useState<LoadedIcons>({});
   const dataForCurrentSeason = crops2DArray[selectedSeason];
 
@@ -34,7 +35,49 @@ function CropsChart({ selectedSeason, growthDays }: Props) {
     if (crop.initialGrow > growthDays) {
       return 0;
     }
-    return (crop.baseSell / (crop.initialGrow + crop.regrow)) * growthDays;
+    // variable to store fertilizerModifer results
+    let fertilizerModifier = 1;
+    if (selectedFertilizer == 0) {
+      // no fertilizer
+      // return base function with no changes to math
+      return (crop.baseSell / (crop.initialGrow + crop.regrow)) * growthDays;
+    } else if (selectedFertilizer > 0 && selectedFertilizer < 4) {
+      // sellprice increase
+      if (selectedFertilizer == 1) {
+        // basic fertilizer
+        fertilizerModifier = 1.01;
+      } else if (selectedFertilizer == 2) {
+        // quality fertilizer
+        fertilizerModifier = 1.07;
+      } else {
+        // selectedFertilizer == 3, deluxe fertilizer
+        fertilizerModifier = 1.32;
+      }
+      // Fertilizer increases baseSell price
+      return (
+        ((crop.baseSell * fertilizerModifier) /
+          (crop.initialGrow + crop.regrow)) *
+        growthDays
+      );
+    } else {
+      // growthTime decrease
+      if (selectedFertilizer == 4) {
+        // Speed-Gro
+        fertilizerModifier = 0.9;
+      } else if (selectedFertilizer == 5) {
+        // Deluxe Speed-Gro
+        fertilizerModifier = 0.75;
+      } else {
+        // selectedFertilizer == 6 Hyper Speed-Gro
+        fertilizerModifier = 0.66;
+      }
+      // Fertilizer decreases initialGrow time
+      return (
+        (crop.baseSell /
+          (crop.initialGrow * fertilizerModifier + crop.regrow)) *
+        growthDays
+      );
+    }
   };
 
   // Sort the data for the current season based on the calculated value

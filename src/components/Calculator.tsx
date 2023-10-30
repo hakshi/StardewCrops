@@ -1,11 +1,12 @@
-import SeasonPickerTest from "./SeasonPicker";
 import CropsChart from "./CropsChart";
 import { useState } from "react";
+import ControlPanel from "./ControlPanel";
 
 const Calculator = () => {
   // State for the selected season in the parent component.
   const [selectedSeason, setSelectedSeason] = useState(0);
   const [growthDays, setGrowthDays] = useState(28);
+  const [selectedFertilizer, setSelectedFertilizer] = useState(0);
 
   // Function to handle updates from the child component
   const handleSeasonChange = (index: number) => {
@@ -16,17 +17,27 @@ const Calculator = () => {
     setGrowthDays(days);
   };
 
+  const handleFertilizerChange = (index: number) => {
+    setSelectedFertilizer(index);
+  };
+
   return (
     <div style={styles.container}>
       <div style={styles.cropsChart}>
-        <CropsChart selectedSeason={selectedSeason} growthDays={growthDays} />
+        <CropsChart
+          selectedSeason={selectedSeason}
+          growthDays={growthDays}
+          selectedFertilizer={selectedFertilizer}
+        />
       </div>
       <div style={styles.seasonPicker}>
-        <SeasonPickerTest
+        <ControlPanel
           defaultSeason={selectedSeason}
           onSeasonChange={handleSeasonChange}
           defaultDays={growthDays}
           onDaysChange={handleGrowthDays}
+          defaultFertilizer={selectedFertilizer}
+          onFertilizerChange={handleFertilizerChange}
         />
       </div>
     </div>
