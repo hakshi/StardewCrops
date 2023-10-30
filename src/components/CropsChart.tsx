@@ -159,13 +159,13 @@ function CropsChart({
       <ResponsiveContainer width="100%" height="100%">
         <BarChart width={1000} height={800} data={sortedData}>
           <XAxis dataKey="name" tick={<CustomTick />} />
-          <YAxis />
+          <YAxis tick={{ fill: "white" }} />
           <Tooltip
             formatter={(value: number) => `$${value.toFixed(2)}`}
             labelFormatter={(name: string) => `Crop: ${name}`}
           />
           <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey={calculateBarValue} fill="#8884d8" />
+          <Bar dataKey={calculateBarValue} fill="#45e82c" />
         </BarChart>
       </ResponsiveContainer>
     </div>

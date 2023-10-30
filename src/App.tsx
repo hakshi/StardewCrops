@@ -3,11 +3,12 @@ import Calculator from "./components/Calculator";
 import Heading from "./components/Heading";
 import { preloadImages } from "./imagePreloader";
 import imagePaths from "./imagePaths";
+import backgroundImage from "./assets/img/bg_night.png";
 
 function App() {
   useEffect(() => {
     preloadImages(imagePaths);
-  });
+  }, []);
 
   return (
     <div style={styles.container}>
@@ -21,6 +22,12 @@ export default App;
 
 const styles = {
   container: {
-    flex: 1,
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    height: "100vh",
+    width: "100vw",
+    overflow: "hidden",
   },
 };

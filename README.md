@@ -1,27 +1,9 @@
-# React + TypeScript + Vite
+# Stardew Valley Crops Profit Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React and TypeScript data visualization project that renders a bar chart of crop sell values from the farming simulator game Stardew Valley.
 
-Currently, two official plugins are available:
+The user can input values corresponding to in-game stats to update how the bar chart renders the sell prices of the crops. Using an averaging equation based on the in-game selling price mechanics, the user can input player farming level, fertilizer choices, and amount of days given for the crop to grow to figure out what the most profitable crop to plant would be.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The chart also allows the switching of seasons to test which crop in which season would be best.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![Screenshot image of the Stardew Valley Crops calculator project](./src/assets/img/Screenshot.png)

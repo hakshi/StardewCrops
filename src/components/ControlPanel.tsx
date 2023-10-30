@@ -82,7 +82,7 @@ function ControlPanel({
         </ul>
       </div>
       <div className="growthDays">
-        <label>
+        <label style={{ color: "white" }}>
           Growth Days:
           <input
             type="number"
@@ -114,7 +114,7 @@ function ControlPanel({
         </ul>
       </div>
       <div className="farmingLevel">
-        <label>
+        <label style={{ color: "white" }}>
           Farming Level:
           <input
             type="number"
