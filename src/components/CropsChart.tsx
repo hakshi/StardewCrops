@@ -62,16 +62,12 @@ function CropsChart({ selectedSeason, growthDays }: Props) {
     };
 
     preloadIcons();
-  }, [selectedSeason]); // The effect depends on the selected season
+  }, [selectedSeason, dataForCurrentSeason]); // The effect depends on the selected season
 
   // CustomTick is created using Recharts, documentation
   // describes how to use the tick field in the XAxis component.
-  const CustomTick = (props: any) => {
-    const { x, y, payload } = props;
-
+  const CustomTick = ({ x, y, payload }: any) => {
     const iconSrc = loadedIcons[payload.value];
-
-    console.log("payload.value:", payload.value, "iconSrc:", iconSrc);
 
     if (!iconSrc) {
       return null;
@@ -79,7 +75,7 @@ function CropsChart({ selectedSeason, growthDays }: Props) {
 
     return (
       <g transform={`translate(${x},${y})`}>
-        <image x={-10} y={-10} xlinkHref={iconSrc} width="20" height="20" />
+        <image x={-10} y={-10} xlinkHref={iconSrc} width="30" height="30" />
       </g>
     );
   };

@@ -320,12 +320,31 @@ let crops: Crop[] = [
         regrow: 0
     },
     {
+        name: "Sweet Gem Berry",
+        baseSell: 3000,
+        url: "http://stardewvalleywiki.com/Sweet_Gem_Berry",
+        img: "sweetgemberry.png",
+        season: "fall",
+        initialGrow: 24,
+        regrow: 0
+
+    },
+    {
         name: "Yam",
         baseSell: 160,
         url: "http://stardewvalleywiki.com/Yam",
         img: "yam.png",
         season: "fall",
         initialGrow: 10,
+        regrow: 0
+    },
+    {
+        name: "Winter Seeds",
+        baseSell: 95,
+        url: "https://stardewvalleywiki.com/Winter_Seeds",
+        img: "winterseeds.png",
+        season: "winter",
+        initialGrow: 7,
         regrow: 0
     }
 ];
