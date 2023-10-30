@@ -118,6 +118,8 @@ function CropsChart({
 
   // Function to preload all crop thumbnails for bar
   useEffect(() => {
+    const dataForCurrentSeason = crops2DArray[selectedSeason];
+
     const preloadIcons = async () => {
       const icons: LoadedIcons = {};
 
@@ -134,7 +136,7 @@ function CropsChart({
     };
 
     preloadIcons();
-  }, [selectedSeason, dataForCurrentSeason]); // The effect depends on the selected season
+  }, [selectedSeason]); // The effect now onhly depends on the selected season
 
   // CustomTick is created using Recharts, documentation
   // describes how to use the tick field in the XAxis component.
@@ -174,7 +176,7 @@ export default CropsChart;
 
 const styles = {
   container: {
-    width: 1000,
+    width: 1500,
     height: 500,
   },
 };
