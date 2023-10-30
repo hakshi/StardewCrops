@@ -7,7 +7,7 @@ interface Props {
   onDaysChange: (days: number) => void;
 }
 
-function SeasonPickerTest({
+function ControlPanel({
   defaultSeason,
   onSeasonChange,
   defaultDays,
@@ -59,4 +59,4 @@ function SeasonPickerTest({
   );
 }
 
-export default SeasonPickerTest;
+export default ControlPanel;
